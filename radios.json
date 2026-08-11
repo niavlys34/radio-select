@@ -1,0 +1,11 @@
+{
+  "fip": {"nom": "Radio FIP", "url": "https://stream.radiofrance.fr/fip/fip.m3u8"},
+  "fipe": {"nom": "FIP Electro", "url": "https://stream.radiofrance.fr/fipelectro/fipelectro.m3u8"},
+  "icih": {"nom": "Ici Hérault", "url": "https://stream.radiofrance.fr/fbherault/fbherault.m3u8"},
+  "inter": {"nom": "France Inter", "url": "https://stream.radiofrance.fr/franceinter/franceinter.m3u8"},
+  "cult": {"nom": "France Culture", "url": "https://stream.radiofrance.fr/franceculture/franceculture.m3u8"},
+  "info": {"nom": "France Info", "url": "https://stream.radiofrance.fr/franceinfo/franceinfo.m3u8"},
+  "viva": {"nom": "RTBF Vivacité", "url": "https://www.static.rtbf.be/radio/vivacite/m3u/vivabxl-aac.pls"},
+  "vrt1": {"nom": "VRT Radio 1", "url": "http://icecast.vrtcdn.be/radio1.aac"},
+  "rmc": {"nom": "RMC", "url": "http://audio.bfmtv.com/rmcradio_128.mp3"}
+}

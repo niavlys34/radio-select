@@ -1,0 +1,14 @@
+[Unit]
+Description=MPV en tache de fond (radio) avec controle via socket
+After=sound.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=sylvain
+ExecStart=/usr/bin/mpv --no-video --ao=alsa --audio-device=alsa/plughw:CARD=PCH,DEV=0 --idle --input-ipc-server=/tmp/mpvsocket
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

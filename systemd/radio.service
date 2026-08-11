@@ -1,0 +1,14 @@
+[Unit]
+Description=Charge le flux radio par défaut dans mpv-radio via radio-select.py
+After=mpv-radio.service
+Requires=mpv-radio.service
+
+[Service]
+Type=oneshot
+User=sylvain
+ExecStartPre=/bin/bash -c 'timeout 30 bash -c "until curl -sf --max-time 2 --head https://stream.radiofrance.fr/fip/fip.m3u8 >/dev/null; do sleep 1; done"'
+ExecStart=/usr/bin/env python3 /home/sylvain/radio-select/radio-select.py fip
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
