@@ -10,7 +10,7 @@ import time
 SOCKET_PATH = "/tmp/mpvsocket"
 FLUX_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "radios.json")
 SERVICE = "mpv-radio.service"
-SOCKET_TIMEOUT = 5 # secondes d'attente pour que le socket MPV apparaisse
+SOCKET_TIMEOUT = 5  # secondes d'attente max que le socket apparaisse
 
 
 def load_flux():
@@ -41,6 +41,18 @@ def stop_service():
     subprocess.run(["sudo", "systemctl", "stop", SERVICE], check=True)
 
 
+def wait_for_socket(timeout=SOCKET_TIMEOUT):
+    start = time.time()
+    while time.time() - start < timeout:
+        try:
+            with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as s:
+                s.connect(SOCKET_PATH)
+            return True
+        except (FileNotFoundError, ConnectionRefusedError):
+            time.sleep(0.2)
+    return False
+
+
 def ensure_service_running():
     if is_service_active():
         return
@@ -56,15 +68,6 @@ def cmd_status():
         print(f"{SERVICE} : actif")
     else:
         print(f"{SERVICE} : inactif")
-
-
-def wait_for_socket(timeout=SOCKET_TIMEOUT):
-    start = time.time()
-    while time.time() - start < timeout:
-        if os.path.exists(SOCKET_PATH):
-            return True
-        time.sleep(0.2)
-    return False
 
 
 def cmd_run():
