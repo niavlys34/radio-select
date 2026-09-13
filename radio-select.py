@@ -121,7 +121,7 @@ def main():
         list_flux()
     elif arg == "status":
         cmd_status()
-    elif arg == "run":
+    elif arg == "start":
         cmd_run()
     elif arg == "stop":
         cmd_stop()
