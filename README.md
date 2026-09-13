@@ -24,6 +24,7 @@ Les flux disponibles sont définis dans `radios.json` :
 ## Déploiement (systemd)
 
 Installer alsa-utils et mpv
+
     sudo apt install alsa-utils
     sudo apt install mpv
 
@@ -38,5 +39,6 @@ Installation de base :
     sudo systemctl daemon-reload
 
 Pour un lancer le service mpv et charger un flux par défaut au lancement du système :
+
     sudo systemctl enable --now mpv-radio.service
     sudo systemctl enable --now radio.service
